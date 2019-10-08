@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "ru.dipech"
-version = "0.0.1-SNAPSHOT"
+version = file("src/main/resources/app.version").getText()
 sourceCompatibility = "1.8"
 
 configurations {

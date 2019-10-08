@@ -18,8 +18,9 @@ public class Processor {
         Arrays.stream(args).forEach(arg -> this.args.add(detect(arg)));
     }
 
-    public List<Arg> getConcreteArgs(Class<? extends Arg> argType) {
-        return args.stream().filter(argType::isInstance).collect(Collectors.toList());
+    @SuppressWarnings("unchecked")
+    public <T extends Arg> List<T> getConcreteArgs(Class<T> argClass) {
+        return (List<T>) args.stream().filter(argClass::isInstance).collect(Collectors.toList());
     }
 
     private Arg detect(String raw) {

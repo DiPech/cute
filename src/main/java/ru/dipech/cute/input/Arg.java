@@ -5,7 +5,7 @@ import lombok.ToString;
 
 @Getter
 @ToString
-abstract public class Arg {
+public abstract class Arg {
     protected final String value;
 
     public Arg(String raw) {
