@@ -1,0 +1,39 @@
+plugins {
+    id "java"
+}
+
+group = "ru.dipech"
+version = "0.0.1-SNAPSHOT"
+sourceCompatibility = "1.8"
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+	jar.archiveName = "cute.jar"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly "org.projectlombok:lombok:1.18.10"
+    annotationProcessor "org.projectlombok:lombok:1.18.10"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.3.1"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.3.1"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "ru.dipech.cute.Application"
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
