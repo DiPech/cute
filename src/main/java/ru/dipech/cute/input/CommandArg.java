@@ -3,9 +3,9 @@ package ru.dipech.cute.input;
 import lombok.ToString;
 
 @ToString(callSuper = true)
-public class TaskArg extends Arg {
+public class CommandArg extends Arg {
 
-    public TaskArg(String raw) {
+    public CommandArg(String raw) {
         super(raw);
     }
 

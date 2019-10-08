@@ -1,8 +1,8 @@
 package ru.dipech.cute.state;
 
 import lombok.RequiredArgsConstructor;
-import ru.dipech.cute.input.FlagArg;
 import ru.dipech.cute.input.Processor;
+import ru.dipech.cute.input.CommandArg;
 
 import java.util.List;
 
@@ -11,9 +11,12 @@ public abstract class State {
     protected final Processor processor;
 
     public static State getInstance(Processor processor) {
-        List<FlagArg> flags = processor.getConcreteArgs(FlagArg.class);
-        if (flags.size() == 1 && flags.get(0).getKey().equals("v")) {
+        if (processor.hasFlag("v")) {
             return new PrintAppVersionState(processor);
+        }
+        List<CommandArg> commandArgs = processor.getConcreteArgs(CommandArg.class);
+        if (commandArgs.size() > 0) {
+            return new ExecuteCommandsState(processor);
         }
         return new PrintCommandsState(processor);
     }

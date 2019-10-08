@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Getter
@@ -23,6 +24,11 @@ public class Processor {
         return (List<T>) args.stream().filter(argClass::isInstance).collect(Collectors.toList());
     }
 
+    public boolean hasFlag(String key) {
+        Optional<FlagArg> flag = getConcreteArgs(FlagArg.class).stream().filter(a->a.getKey().equals(key)).findFirst();
+        return flag.isPresent();
+    }
+
     private Arg detect(String raw) {
         raw = StringUtils.strip(raw);
         if (StringUtils.startsWith(raw, "-")) {
@@ -31,6 +37,6 @@ public class Processor {
         if (raw.contains("=")) {
             return new ParamArg(raw);
         }
-        return new TaskArg(raw);
+        return new CommandArg(raw);
     }
 }
