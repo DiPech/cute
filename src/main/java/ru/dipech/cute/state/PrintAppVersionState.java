@@ -2,7 +2,6 @@ package ru.dipech.cute.state;
 
 import ru.dipech.cute.Application;
 import ru.dipech.cute.exception.InternalException;
-import ru.dipech.cute.input.Processor;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,10 +10,6 @@ import java.io.InputStreamReader;
 import java.util.Objects;
 
 public class PrintAppVersionState extends State {
-    public PrintAppVersionState(Processor processor) {
-        super(processor);
-    }
-
     public void execute() {
         String appVersion;
         try {
@@ -22,7 +17,7 @@ public class PrintAppVersionState extends State {
             BufferedReader reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(is)));
             appVersion = reader.readLine();
         } catch (IOException e) {
-            throw new InternalException(e);
+            throw new InternalException("Can't read app.version file", e);
         }
         System.out.println("Cute app. Version " + appVersion + ".");
     }
