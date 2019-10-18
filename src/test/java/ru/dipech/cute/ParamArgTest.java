@@ -25,12 +25,12 @@ class ParamArgTest {
 
     @Test
     void parseParamWithEmptyValue() {
-        assertEquals(new ParamArg("par", ""), (new ParamArg()).parse("par="));
+        assertEquals(new ParamArg("par", ""), (new ParamArg()).parse("--par="));
     }
 
     @Test
     void parseSimpleParam() {
-        assertEquals(new ParamArg("n", "v"), (new ParamArg()).parse("n=v"));
+        assertEquals(new ParamArg("n", "v"), (new ParamArg()).parse("-n=v"));
     }
 
     @Test
