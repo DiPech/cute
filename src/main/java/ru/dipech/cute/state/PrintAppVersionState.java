@@ -2,6 +2,7 @@ package ru.dipech.cute.state;
 
 import ru.dipech.cute.Application;
 import ru.dipech.cute.exception.InternalException;
+import ru.dipech.cute.model.AppContext;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,6 +11,10 @@ import java.io.InputStreamReader;
 import java.util.Objects;
 
 public class PrintAppVersionState extends State {
+    public PrintAppVersionState(AppContext appContext) {
+        super(appContext);
+    }
+
     public void execute() {
         String appVersion;
         try {

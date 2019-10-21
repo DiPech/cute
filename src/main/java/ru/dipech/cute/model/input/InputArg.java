@@ -1,4 +1,4 @@
-package ru.dipech.cute.model;
+package ru.dipech.cute.model.input;
 
 import lombok.*;
 
@@ -7,8 +7,8 @@ import lombok.*;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class Arg {
+public abstract class InputArg {
     protected String name;
 
-    public abstract Arg parse(String raw);
+    public abstract InputArg parse(String raw);
 }

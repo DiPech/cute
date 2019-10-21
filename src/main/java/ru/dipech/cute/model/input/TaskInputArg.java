@@ -1,4 +1,4 @@
-package ru.dipech.cute.model;
+package ru.dipech.cute.model.input;
 
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -7,13 +7,13 @@ import ru.dipech.cute.exception.ArgParseException;
 
 @ToString(callSuper = true)
 @NoArgsConstructor
-public class TaskArg extends Arg {
-    public TaskArg(String name) {
+public class TaskInputArg extends InputArg {
+    public TaskInputArg(String name) {
         super(name);
     }
 
     @Override
-    public TaskArg parse(String raw) {
+    public TaskInputArg parse(String raw) {
         if (raw.contains("-") || raw.contains("=")) {
             throw new ArgParseException("Task name contains bad symbols");
         }

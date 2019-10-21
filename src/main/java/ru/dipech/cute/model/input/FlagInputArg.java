@@ -1,4 +1,4 @@
-package ru.dipech.cute.model;
+package ru.dipech.cute.model.input;
 
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -7,13 +7,13 @@ import ru.dipech.cute.exception.ArgParseException;
 
 @ToString(callSuper = true)
 @NoArgsConstructor
-public class FlagArg extends Arg {
-    public FlagArg(String name) {
+public class FlagInputArg extends InputArg {
+    public FlagInputArg(String name) {
         super(name);
     }
 
     @Override
-    public FlagArg parse(String raw) {
+    public FlagInputArg parse(String raw) {
         if (!raw.contains("-")) {
             throw new ArgParseException("Flag should contain dash prefix");
         }

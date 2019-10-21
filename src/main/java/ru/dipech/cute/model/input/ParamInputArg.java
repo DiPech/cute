@@ -1,22 +1,24 @@
-package ru.dipech.cute.model;
+package ru.dipech.cute.model.input;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.apache.commons.lang3.StringUtils;
 import ru.dipech.cute.exception.ArgParseException;
 
+@Getter
 @ToString(callSuper = true)
 @NoArgsConstructor
-public class ParamArg extends Arg {
+public class ParamInputArg extends InputArg {
     private String value;
 
-    public ParamArg(String name, String value) {
+    public ParamInputArg(String name, String value) {
         super(name);
         this.value = value;
     }
 
     @Override
-    public ParamArg parse(String raw) {
+    public ParamInputArg parse(String raw) {
         if (!raw.contains("=") || !raw.contains("-")) {
             throw new ArgParseException("Param should have equal sign and dash prefix");
         }
