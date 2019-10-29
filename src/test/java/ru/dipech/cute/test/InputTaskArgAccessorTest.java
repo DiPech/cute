@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import ru.dipech.cute.model.input.FlagInputArg;
+import ru.dipech.cute.model.input.InputArgs;
 import ru.dipech.cute.model.input.InputTask;
 import ru.dipech.cute.model.input.ParamInputArg;
 
@@ -18,9 +19,9 @@ class InputTaskArgAccessorTest {
 
     @BeforeAll
     static void init() {
-        inputTask = InputTask.builder()
-            .flags(getArgMap(new FlagInputArg("f"), new FlagInputArg("flag")))
-            .params(getArgMap(
+        inputTask = new InputTask(null, new InputArgs(
+            getArgMap(new FlagInputArg("f"), new FlagInputArg("flag")),
+            getArgMap(
                 // Regular
                 new ParamInputArg("p", "v"),
                 new ParamInputArg("param", "value"),
@@ -28,59 +29,59 @@ class InputTaskArgAccessorTest {
                 new ParamInputArg("empty"),
                 // Multiple values
                 new ParamInputArg("mp", "v1", "v2", "v3")
-            ))
-            .build();
+            )
+        ));
     }
 
     @Test
     void hasFlag() {
-        assertTrue(inputTask.hasFlag("f"));
-        assertTrue(inputTask.hasFlag("flag"));
-        assertFalse(inputTask.hasFlag("badflag"));
-        assertFalse(inputTask.hasFlag("x"));
+        assertTrue(inputTask.getArgs().hasFlag("f"));
+        assertTrue(inputTask.getArgs().hasFlag("flag"));
+        assertFalse(inputTask.getArgs().hasFlag("badflag"));
+        assertFalse(inputTask.getArgs().hasFlag("x"));
     }
 
     @Test
     void hasParam() {
-        assertTrue(inputTask.hasParam("p"));
-        assertTrue(inputTask.hasParam("param"));
-        assertTrue(inputTask.hasParam("empty"));
-        assertFalse(inputTask.hasParam("badparam"));
-        assertFalse(inputTask.hasParam("x"));
+        assertTrue(inputTask.getArgs().hasParam("p"));
+        assertTrue(inputTask.getArgs().hasParam("param"));
+        assertTrue(inputTask.getArgs().hasParam("empty"));
+        assertFalse(inputTask.getArgs().hasParam("badparam"));
+        assertFalse(inputTask.getArgs().hasParam("x"));
     }
 
     @Test
     void getParamValue() {
-        assertEquals(inputTask.getParamValue("p"), "v");
-        assertEquals(inputTask.getParamValue("param"), "value");
-        assertNull(inputTask.getParamValue("empty"));
-        assertNull(inputTask.getParamValue("badparam"));
-        assertNull(inputTask.getParamValue("x"));
+        assertEquals(inputTask.getArgs().getParamValue("p"), "v");
+        assertEquals(inputTask.getArgs().getParamValue("param"), "value");
+        assertNull(inputTask.getArgs().getParamValue("empty"));
+        assertNull(inputTask.getArgs().getParamValue("badparam"));
+        assertNull(inputTask.getArgs().getParamValue("x"));
     }
 
     @Test
     void getFlagsCount() {
-        assertEquals(inputTask.getFlagsCount(), 2);
+        assertEquals(inputTask.getArgs().getFlagsCount(), 2);
     }
 
     @Test
     void getParamsCount() {
-        assertEquals(inputTask.getParamsCount(), 4);
+        assertEquals(inputTask.getArgs().getParamsCount(), 4);
     }
 
     @Test
     void getParamValuesCount() {
-        assertEquals(inputTask.getParamValuesCount("badparam"), 0);
-        assertEquals(inputTask.getParamValuesCount("empty"), 0);
-        assertEquals(inputTask.getParamValuesCount("param"), 1);
-        assertEquals(inputTask.getParamValuesCount("mp"), 3);
+        assertEquals(inputTask.getArgs().getParamValuesCount("badparam"), 0);
+        assertEquals(inputTask.getArgs().getParamValuesCount("empty"), 0);
+        assertEquals(inputTask.getArgs().getParamValuesCount("param"), 1);
+        assertEquals(inputTask.getArgs().getParamValuesCount("mp"), 3);
     }
 
     @Test
     void getParamValues() {
-        assertEquals(inputTask.getParamValues("badparam").length, 0);
-        assertEquals(inputTask.getParamValues("empty").length, 0);
-        assertEquals(inputTask.getParamValues("p")[0], "v");
-        assertEquals(Arrays.asList(inputTask.getParamValues("mp")), Arrays.asList("v1", "v2", "v3"));
+        assertEquals(inputTask.getArgs().getParamValues("badparam").length, 0);
+        assertEquals(inputTask.getArgs().getParamValues("empty").length, 0);
+        assertEquals(inputTask.getArgs().getParamValues("p")[0], "v");
+        assertEquals(Arrays.asList(inputTask.getArgs().getParamValues("mp")), Arrays.asList("v1", "v2", "v3"));
     }
 }

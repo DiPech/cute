@@ -4,25 +4,22 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.dipech.cute.model.RuntimeContext;
 import ru.dipech.cute.model.input.InputArg;
-import ru.dipech.cute.model.input.InputTask;
+import ru.dipech.cute.model.input.InputArgs;
 import ru.dipech.cute.model.input.TaskInputArg;
 
-import java.util.HashMap;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class RuntimeContextParser {
-    private final InputTaskArgAdder inputTaskArgAdder;
-
     public RuntimeContext parse(List<InputArg> args) {
-        InputTask inputTask = new InputTask(null, new HashMap<>(), new HashMap<>());
+        InputArgs inputArgs = new InputArgs();
         for (InputArg inputArg : args) {
             if (inputArg instanceof TaskInputArg) {
                 break;
             }
-            inputTaskArgAdder.add(inputTask, inputArg);
+            inputArgs.add(inputArg);
         }
-        return new RuntimeContext(inputTask);
+        return new RuntimeContext(inputArgs);
     }
 }

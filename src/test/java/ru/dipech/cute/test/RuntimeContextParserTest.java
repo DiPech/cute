@@ -8,7 +8,6 @@ import ru.dipech.cute.model.input.*;
 import ru.dipech.cute.service.RuntimeContextParser;
 import ru.dipech.cute.util.TestUtil;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,11 +22,7 @@ class RuntimeContextParserTest {
 
     @Test
     void parseSimpleInput() {
-        InputTask inputTask = InputTask.builder()
-            .flags(getArgMap(new FlagInputArg("v")))
-            .params(new HashMap<>())
-            .build();
-        RuntimeContext expected = new RuntimeContext(inputTask);
+        RuntimeContext expected = new RuntimeContext(new InputArgs(getArgMap(new FlagInputArg("v")), getArgMap()));
         List<InputArg> input = new LinkedList<>();
         input.add(new FlagInputArg("v"));
         input.add(new TaskInputArg("task1"));
@@ -39,17 +34,16 @@ class RuntimeContextParserTest {
 
     @Test
     void parseDifficultInput() {
-        InputTask inputTask = InputTask.builder()
-            .flags(getArgMap(new FlagInputArg("unused"), new FlagInputArg("u"), new FlagInputArg("v")))
-            .params(getArgMap(new ParamInputArg("notusedparam", "notusedvalue")))
-            .build();
-        RuntimeContext expected = new RuntimeContext(inputTask);
+        RuntimeContext expected = new RuntimeContext(new InputArgs(
+            getArgMap(new FlagInputArg("unused"), new FlagInputArg("u"), new FlagInputArg("v")),
+            getArgMap(new ParamInputArg("notusedparam", "notusedvalue"))
+        ));
         assertEquals(expected, parser.parse(TestUtil.getInputArgList()));
     }
 
     @Test
     void parseEmptyInput() {
-        RuntimeContext expected = new RuntimeContext(new InputTask(null, new HashMap<>(), new HashMap<>()));
+        RuntimeContext expected = new RuntimeContext(new InputArgs());
         List<InputArg> input = new LinkedList<>();
         assertEquals(expected, parser.parse(input));
     }

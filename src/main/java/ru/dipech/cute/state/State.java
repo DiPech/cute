@@ -8,7 +8,7 @@ public abstract class State {
     protected final AppContext appContext;
 
     public static State getInstance(AppContext appContext) {
-        if (appContext.getRuntimeContext().hasFlag("v")) {
+        if (appContext.getRuntimeContext().getArgs().hasFlag("v")) {
             return new PrintAppVersionState(appContext);
         }
         if (appContext.getTaskContext().getInputTasks().size() > 0) {

@@ -7,7 +7,6 @@ import ru.dipech.cute.model.input.*;
 import ru.dipech.cute.service.InputTaskParser;
 import ru.dipech.cute.util.TestUtil;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,11 +22,10 @@ class InputTaskParserTest {
     @Test
     void parseSimpleInput() {
         List<InputTask> expected = new LinkedList<>();
-        InputTask task = InputTask.builder()
-            .name("task:name")
-            .flags(getArgMap(new FlagInputArg("-v"), new FlagInputArg("--flag")))
-            .params(getArgMap(new ParamInputArg("a", "b")))
-            .build();
+        InputTask task = new InputTask("task:name", new InputArgs(
+            getArgMap(new FlagInputArg("-v"), new FlagInputArg("--flag")),
+            getArgMap(new ParamInputArg("a", "b"))
+        ));
         expected.add(task);
         List<InputArg> input = new LinkedList<>();
         input.add(new TaskInputArg("task:name"));
@@ -40,16 +38,13 @@ class InputTaskParserTest {
     @Test
     void parseDifficultInput() {
         List<InputTask> expected = new LinkedList<>();
-        InputTask task1 = InputTask.builder()
-            .name("task1")
-            .flags(new HashMap<>())
-            .params(getArgMap(new ParamInputArg("param", "value")))
-            .build();
-        InputTask task2 = InputTask.builder()
-            .name("task:sub:subtask2")
-            .flags(getArgMap(new FlagInputArg("f")))
-            .params(getArgMap(new ParamInputArg("p1", "v1"), new ParamInputArg("p2", "v2"), new ParamInputArg("param3", "value3")))
-            .build();
+        InputTask task1 = new InputTask("task1", new InputArgs(
+            getArgMap(), getArgMap(new ParamInputArg("param", "value"))
+        ));
+        InputTask task2 = new InputTask("task:sub:subtask2", new InputArgs(
+            getArgMap(new FlagInputArg("f")),
+            getArgMap(new ParamInputArg("p1", "v1"), new ParamInputArg("p2", "v2"), new ParamInputArg("param3", "value3"))
+        ));
         expected.add(task1);
         expected.add(task2);
         assertEquals(expected, parser.parse(TestUtil.getInputArgList()));
@@ -58,11 +53,9 @@ class InputTaskParserTest {
     @Test
     void parseInputWithMultipleParametersWithTheSameNamesButDifferentValues() {
         List<InputTask> expected = new LinkedList<>();
-        InputTask task = InputTask.builder()
-            .name("task:name")
-            .flags(getArgMap())
-            .params(getArgMap(new ParamInputArg("p", "v1", "v2", "v3")))
-            .build();
+        InputTask task = new InputTask("task:name", new InputArgs(
+            getArgMap(), getArgMap(new ParamInputArg("p", "v1", "v2", "v3"))
+        ));
         expected.add(task);
         List<InputArg> input = new LinkedList<>();
         input.add(new TaskInputArg("task:name"));
