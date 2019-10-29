@@ -1,20 +1,31 @@
 package ru.dipech.cute.model.input;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.apache.commons.lang3.StringUtils;
 import ru.dipech.cute.exception.ArgParseException;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @Getter
 @ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 public class ParamInputArg extends InputArg {
-    private String value;
+    private List<String> values;
 
-    public ParamInputArg(String name, String value) {
+    public ParamInputArg(String name, List<String> values) {
         super(name);
-        this.value = value;
+        this.values = values;
+    }
+
+    public ParamInputArg(String name, String... values) {
+        super(name);
+        this.values = new ArrayList<>(Arrays.asList(values));
     }
 
     @Override
@@ -28,7 +39,13 @@ public class ParamInputArg extends InputArg {
             throw new ArgParseException("Missed parameter name");
         }
         name = raw.substring(0, equalSignIndex);
-        value = raw.substring(equalSignIndex);
+        String value = raw.substring(equalSignIndex + 1);
+        values = new ArrayList<>();
+        values.add(value);
         return this;
+    }
+
+    public void addValue(String value) {
+        values.add(value);
     }
 }

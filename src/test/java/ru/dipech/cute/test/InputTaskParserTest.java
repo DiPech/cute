@@ -56,6 +56,23 @@ class InputTaskParserTest {
     }
 
     @Test
+    void parseInputWithMultipleParametersWithTheSameNamesButDifferentValues() {
+        List<InputTask> expected = new LinkedList<>();
+        InputTask task = InputTask.builder()
+            .name("task:name")
+            .flags(getArgMap())
+            .params(getArgMap(new ParamInputArg("p", "v1", "v2", "v3")))
+            .build();
+        expected.add(task);
+        List<InputArg> input = new LinkedList<>();
+        input.add(new TaskInputArg("task:name"));
+        input.add(new ParamInputArg("p", "v1"));
+        input.add(new ParamInputArg("p", "v2"));
+        input.add(new ParamInputArg("p", "v3"));
+        assertEquals(expected, parser.parse(input));
+    }
+
+    @Test
     void parseEmptyInput() {
         List<InputTask> expected = new LinkedList<>();
         List<InputArg> input = new LinkedList<>();

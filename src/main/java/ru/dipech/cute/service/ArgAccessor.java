@@ -4,13 +4,17 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface ArgAccessor {
-    int flagsCount();
+    int getFlagsCount();
 
-    int paramsCount();
+    int getParamsCount();
+
+    int getParamValuesCount(String name);
 
     boolean hasFlag(String name);
 
     boolean hasParam(String name);
 
-    String getParam(String name);
+    String getParamValue(String name);
+
+    String[] getParamValues(String name);
 }

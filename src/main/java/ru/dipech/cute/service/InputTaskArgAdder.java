@@ -12,7 +12,13 @@ public class InputTaskArgAdder {
         if (arg instanceof FlagInputArg) {
             task.addFlag((FlagInputArg) arg);
         } else if (arg instanceof ParamInputArg) {
-            task.addParam((ParamInputArg) arg);
+            ParamInputArg paramArg = (ParamInputArg) arg;
+            if (task.hasParam(paramArg.getName())) {
+                ParamInputArg alreadyParamArg = task.getParam(paramArg.getName());
+                paramArg.getValues().forEach(alreadyParamArg::addValue);
+            } else {
+                task.addParam(paramArg);
+            }
         }
     }
 }

@@ -25,7 +25,6 @@ public class TestUtil {
         result.add(new FlagInputArg("f"));
         result.add(new ParamInputArg("param3", "value3"));
         result.add(new ParamInputArg("p2", "v2"));
-        result.add(new ParamInputArg("p1", "test"));
         result.add(new ParamInputArg("p1", "v1"));
         return result;
     }

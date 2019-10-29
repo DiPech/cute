@@ -14,13 +14,18 @@ public class RuntimeContext implements ArgAccessor {
     private final InputTask holder;
 
     @Override
-    public int flagsCount() {
-        return holder.flagsCount();
+    public int getFlagsCount() {
+        return holder.getFlagsCount();
     }
 
     @Override
-    public int paramsCount() {
-        return holder.paramsCount();
+    public int getParamsCount() {
+        return holder.getParamsCount();
+    }
+
+    @Override
+    public int getParamValuesCount(String name) {
+        return holder.getParamValuesCount(name);
     }
 
     @Override
@@ -34,7 +39,12 @@ public class RuntimeContext implements ArgAccessor {
     }
 
     @Override
-    public String getParam(String name) {
-        return holder.getParam(name);
+    public String getParamValue(String name) {
+        return holder.getParamValue(name);
+    }
+
+    @Override
+    public String[] getParamValues(String name) {
+        return holder.getParamValues(name);
     }
 }
