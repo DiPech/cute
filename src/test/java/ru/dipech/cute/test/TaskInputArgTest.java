@@ -25,6 +25,7 @@ class TaskInputArgTest {
         assertThrows(ArgParseException.class, () -> (new TaskInputArg()).parse(":"));
         assertThrows(ArgParseException.class, () -> (new TaskInputArg()).parse("tAsK:NaMe"));
         assertThrows(ArgParseException.class, () -> (new TaskInputArg()).parse("task::name"));
+        assertThrows(ArgParseException.class, () -> (new TaskInputArg()).parse("ta sk:n ame"));
     }
 
     @Test

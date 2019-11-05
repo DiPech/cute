@@ -1,15 +1,15 @@
 package ru.dipech.cute.exception;
 
 public class InternalException extends RuntimeException {
-    public InternalException(String msg) {
-        super(msg);
+    public InternalException(String message) {
+        super(message);
     }
 
     public InternalException(Throwable cause) {
         super(cause);
     }
 
-    public InternalException(String msg, Throwable cause) {
-        super(msg, cause);
+    public InternalException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

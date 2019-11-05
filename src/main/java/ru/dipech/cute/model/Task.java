@@ -5,6 +5,7 @@ import lombok.*;
 @Builder
 @Getter
 @EqualsAndHashCode(of = {"name"})
+@RequiredArgsConstructor
 @AllArgsConstructor
 public class Task implements Comparable<Task> {
     private final String name;

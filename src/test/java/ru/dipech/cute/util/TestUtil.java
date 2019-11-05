@@ -8,11 +8,15 @@ import ru.dipech.cute.model.input.TaskInputArg;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class TestUtil {
+    public static final String RESOURCES_PATH = "src/test/resources";
+    public static final String PARSER_DATA_PATH = RESOURCES_PATH + "/parser";
+
     public static List<InputArg> getInputArgList() {
         List<InputArg> result = new LinkedList<>();
         result.add(new FlagInputArg("u"));
@@ -32,5 +36,10 @@ public class TestUtil {
     @SafeVarargs
     public static <T extends InputArg> Map<String, T> getArgMap(T... args) {
         return Stream.of(args).collect(Collectors.toMap(T::getName, Function.identity()));
+    }
+
+    @SafeVarargs
+    public static <T> Set<T> getSet(T... values) {
+        return Stream.of(values).collect(Collectors.toSet());
     }
 }
