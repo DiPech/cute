@@ -1,7 +1,8 @@
-package ru.dipech.cute.model;
+package ru.dipech.cute.model.context;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import ru.dipech.cute.model.ScanPath;
 import ru.dipech.cute.model.input.InputTask;
 
 import java.util.LinkedHashSet;

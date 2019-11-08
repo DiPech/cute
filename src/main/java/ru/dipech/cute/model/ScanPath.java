@@ -3,6 +3,7 @@ package ru.dipech.cute.model;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import ru.dipech.cute.model.task.Task;
 
 import java.nio.file.Path;
 import java.util.HashSet;

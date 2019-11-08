@@ -1,4 +1,4 @@
-package ru.dipech.cute.service;
+package ru.dipech.cute.service.parser;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

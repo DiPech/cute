@@ -1,10 +1,9 @@
 package ru.dipech.cute.test;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import ru.dipech.cute.service.InputArgParser;
+import ru.dipech.cute.service.parser.InputArgParser;
 import ru.dipech.cute.model.input.InputArg;
 import ru.dipech.cute.model.input.FlagInputArg;
 import ru.dipech.cute.model.input.ParamInputArg;

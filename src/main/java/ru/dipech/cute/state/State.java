@@ -1,7 +1,7 @@
 package ru.dipech.cute.state;
 
 import lombok.RequiredArgsConstructor;
-import ru.dipech.cute.model.AppContext;
+import ru.dipech.cute.model.context.AppContext;
 
 @RequiredArgsConstructor
 public abstract class State {

@@ -3,9 +3,9 @@ package ru.dipech.cute.test;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import ru.dipech.cute.model.RuntimeContext;
+import ru.dipech.cute.model.context.RuntimeContext;
 import ru.dipech.cute.model.input.*;
-import ru.dipech.cute.service.RuntimeContextParser;
+import ru.dipech.cute.service.parser.RuntimeContextParser;
 import ru.dipech.cute.util.TestUtil;
 
 import java.util.LinkedList;

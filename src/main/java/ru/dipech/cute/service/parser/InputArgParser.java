@@ -1,4 +1,4 @@
-package ru.dipech.cute.service;
+package ru.dipech.cute.service.parser;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;

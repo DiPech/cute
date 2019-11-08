@@ -1,4 +1,4 @@
-package ru.dipech.cute.service;
+package ru.dipech.cute.service.parser;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 import ru.dipech.cute.exception.ScanPathParseException;
 import ru.dipech.cute.exception.TaskParseException;
 import ru.dipech.cute.model.ScanPath;
-import ru.dipech.cute.model.Task;
+import ru.dipech.cute.model.task.Task;
+import ru.dipech.cute.service.PathsProvider;
 
 import java.io.IOException;
 import java.nio.file.Files;

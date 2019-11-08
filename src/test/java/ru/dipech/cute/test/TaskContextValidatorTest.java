@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import ru.dipech.cute.exception.TaskContextValidateException;
-import ru.dipech.cute.model.TaskContext;
+import ru.dipech.cute.model.context.TaskContext;
 import ru.dipech.cute.model.input.InputArgs;
 import ru.dipech.cute.model.input.InputTask;
-import ru.dipech.cute.service.ScanPathParser;
+import ru.dipech.cute.service.parser.ScanPathParser;
 import ru.dipech.cute.service.validator.TaskContextValidator;
 
 import java.util.ArrayList;
