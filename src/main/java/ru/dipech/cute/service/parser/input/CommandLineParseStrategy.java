@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.regex.Pattern;
 
 /**
- * Parse single commandline like string to String[] (e.g. like bash does)
+ * Parse single commandline like string to array (e.g. like bash does)
  */
 @Service
 @Primary

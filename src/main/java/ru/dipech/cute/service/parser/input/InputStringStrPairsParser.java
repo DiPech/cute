@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.dipech.cute.util.pair.StrPair;
 import ru.dipech.cute.util.pair.StrPairs;
 
-import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -14,8 +14,8 @@ public class InputStringStrPairsParser {
     private final InputStringParser inputStringParser;
 
     public StrPairs parse(String command) {
-        String[] args = inputStringParser.parse(command);
-        return new StrPairs(Arrays.stream(args)
+        List<String> args = inputStringParser.parse(command);
+        return new StrPairs(args.stream()
             .map(this::parseStrPair)
             .collect(Collectors.toList())
         );

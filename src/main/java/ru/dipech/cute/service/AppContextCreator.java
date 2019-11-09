@@ -20,7 +20,7 @@ public class AppContextCreator {
     private final RuntimeContextParser runtimeContextParser;
     private final TaskContextParser taskContextParser;
 
-    public AppContext create(String[] rawArgs) {
+    public AppContext create(List<String> rawArgs) {
         List<InputArg> args = inputArgParser.parse(rawArgs);
         List<InputTask> inputTasks = inputTaskParser.parse(args);
         return new AppContext(runtimeContextParser.parse(args), taskContextParser.parse(inputTasks));

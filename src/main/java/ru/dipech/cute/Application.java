@@ -10,6 +10,8 @@ import ru.dipech.cute.model.context.AppContext;
 import ru.dipech.cute.service.AppContextCreator;
 import ru.dipech.cute.state.State;
 
+import java.util.Arrays;
+
 import static java.lang.System.exit;
 
 @Slf4j
@@ -40,7 +42,7 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... emptyArgsArray) {
         String[] rawArgs = inputArguments != null ? inputArguments : new String[]{};
-        AppContext appContext = appContextCreator.create(rawArgs);
+        AppContext appContext = appContextCreator.create(Arrays.asList(rawArgs));
         State state = State.getInstance(appContext);
         state.execute();
     }

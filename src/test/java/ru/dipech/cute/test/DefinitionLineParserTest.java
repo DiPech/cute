@@ -1,6 +1,5 @@
 package ru.dipech.cute.test;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,7 +8,9 @@ import ru.dipech.cute.service.parser.input.InputStringParser;
 import ru.dipech.cute.service.parser.input.ParseStrategy;
 
 import java.util.Arrays;
+import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static ru.dipech.cute.util.TestUtil.COMMAND_LINE_DATA_PATH;
 import static ru.dipech.cute.util.TestUtil.getFileContent;
 
@@ -24,11 +25,11 @@ class DefinitionLineParserTest {
     void parseDefinition() {
         InputStringParser parser = new InputStringParser(parseStrategy);
         // see "command-line/readme.txt"
-        String[] expected = new String[]{
+        List<String> expected = Arrays.asList(
             "name=multi", "title=Parameter can accepts multiple values",
             "default=[\"a\", \"b\", \"c\"]", "validate=[a-z]", "multiple"
-        };
+        );
         String command = getFileContent(COMMAND_LINE_DATA_PATH + "/definition.txt");
-        Assertions.assertEquals(Arrays.asList(expected), Arrays.asList(parser.parse(command)));
+        assertEquals(expected, parser.parse(command));
     }
 }

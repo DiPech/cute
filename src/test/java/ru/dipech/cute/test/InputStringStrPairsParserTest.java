@@ -1,6 +1,5 @@
 package ru.dipech.cute.test;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,6 +9,7 @@ import ru.dipech.cute.util.pair.StrPairs;
 
 import java.util.Arrays;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static ru.dipech.cute.util.TestUtil.COMMAND_LINE_DATA_PATH;
 import static ru.dipech.cute.util.TestUtil.getFileContent;
 
@@ -31,6 +31,6 @@ class InputStringStrPairsParserTest {
             new StrPair("-g")
         ));
         String command = getFileContent(COMMAND_LINE_DATA_PATH + "/command.txt");
-        Assertions.assertEquals(expected, parser.parse(command));
+        assertEquals(expected, parser.parse(command));
     }
 }

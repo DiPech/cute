@@ -79,9 +79,9 @@ class InputTaskArgAccessorTest {
 
     @Test
     void getParamValues() {
-        assertEquals(inputTask.getArgs().getParamValues("badparam").length, 0);
-        assertEquals(inputTask.getArgs().getParamValues("empty").length, 0);
-        assertEquals(inputTask.getArgs().getParamValues("p")[0], "v");
-        assertEquals(Arrays.asList(inputTask.getArgs().getParamValues("mp")), Arrays.asList("v1", "v2", "v3"));
+        assertEquals(inputTask.getArgs().getParamValues("badparam").size(), 0);
+        assertEquals(inputTask.getArgs().getParamValues("empty").size(), 0);
+        assertEquals(inputTask.getArgs().getParamValues("p").get(0), "v");
+        assertEquals(inputTask.getArgs().getParamValues("mp"), Arrays.asList("v1", "v2", "v3"));
     }
 }

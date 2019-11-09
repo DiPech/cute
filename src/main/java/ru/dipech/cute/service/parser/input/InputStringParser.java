@@ -15,13 +15,13 @@ public class InputStringParser {
     private final String parseParamRegex = "(.*?)=\"(.*?)\"";
     private final Pattern parseParamPattern = Pattern.compile(parseParamRegex, Pattern.MULTILINE);
 
-    public String[] parse(String command) {
+    public List<String> parse(String command) {
         List<String> result = new ArrayList<>();
         Matcher matcher = parseStrategy.getPattern().matcher(command);
         while (matcher.find()) {
             result.add(preprocessFound(matcher.group(1)));
         }
-        return result.toArray(new String[]{});
+        return result;
     }
 
     private String preprocessFound(String found) {

@@ -67,7 +67,7 @@ public class TaskParser {
         if (commandLine == null) {
             return new LinkedList<>();
         }
-        String[] args = commandLineParser.parse(commandLine);
+        List<String> args = commandLineParser.parse(commandLine);
         List<InputArg> inputArgs = inputArgParser.parse(args);
         return inputTaskParser.parse(inputArgs);
     }
