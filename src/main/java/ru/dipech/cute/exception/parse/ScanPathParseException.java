@@ -1,6 +1,6 @@
-package ru.dipech.cute.exception;
+package ru.dipech.cute.exception.parse;
 
-public class ScanPathParseException extends InternalException {
+public class ScanPathParseException extends ParseException {
     public ScanPathParseException(String message) {
         super(message);
     }

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import ru.dipech.cute.model.input.*;
-import ru.dipech.cute.service.InputTaskParser;
+import ru.dipech.cute.service.parser.InputTaskParser;
 import ru.dipech.cute.util.TestUtil;
 
 import java.util.LinkedList;

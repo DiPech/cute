@@ -1,4 +1,4 @@
-package ru.dipech.cute.model;
+package ru.dipech.cute.model.context;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

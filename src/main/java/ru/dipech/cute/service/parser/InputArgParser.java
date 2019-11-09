@@ -1,4 +1,4 @@
-package ru.dipech.cute.service;
+package ru.dipech.cute.service.parser;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 public class InputArgParser {
-    public List<InputArg> parse(String[] input) {
+    public List<InputArg> parse(List<String> input) {
         List<InputArg> result = new LinkedList<>();
         for (String raw : input) {
             // Param?

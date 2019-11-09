@@ -2,7 +2,7 @@ package ru.dipech.cute.state;
 
 import ru.dipech.cute.Application;
 import ru.dipech.cute.exception.InternalException;
-import ru.dipech.cute.model.AppContext;
+import ru.dipech.cute.model.context.AppContext;
 
 import java.io.BufferedReader;
 import java.io.IOException;

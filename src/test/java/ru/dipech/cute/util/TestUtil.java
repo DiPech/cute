@@ -1,10 +1,14 @@
 package ru.dipech.cute.util;
 
+import ru.dipech.cute.exception.InternalException;
 import ru.dipech.cute.model.input.FlagInputArg;
 import ru.dipech.cute.model.input.InputArg;
 import ru.dipech.cute.model.input.ParamInputArg;
 import ru.dipech.cute.model.input.TaskInputArg;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +20,8 @@ import java.util.stream.Stream;
 public class TestUtil {
     public static final String RESOURCES_PATH = "src/test/resources";
     public static final String PARSER_DATA_PATH = RESOURCES_PATH + "/parser";
+    public static final String TASK_DATA_PATH = RESOURCES_PATH + "/task";
+    public static final String COMMAND_LINE_DATA_PATH = RESOURCES_PATH + "/command-line";
 
     public static List<InputArg> getInputArgList() {
         List<InputArg> result = new LinkedList<>();
@@ -41,5 +47,13 @@ public class TestUtil {
     @SafeVarargs
     public static <T> Set<T> getSet(T... values) {
         return Stream.of(values).collect(Collectors.toSet());
+    }
+
+    public static String getFileContent(String path) {
+        try {
+            return new String(Files.readAllBytes(Paths.get(path)));
+        } catch (IOException e) {
+            throw new InternalException(e);
+        }
     }
 }

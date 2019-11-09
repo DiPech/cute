@@ -3,7 +3,7 @@ package ru.dipech.cute.service;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
 import ru.dipech.cute.model.ScanPath;
-import ru.dipech.cute.model.TaskContext;
+import ru.dipech.cute.model.context.TaskContext;
 
 import java.util.HashMap;
 import java.util.HashSet;

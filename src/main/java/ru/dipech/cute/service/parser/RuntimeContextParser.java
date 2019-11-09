@@ -1,8 +1,8 @@
-package ru.dipech.cute.service;
+package ru.dipech.cute.service.parser;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.dipech.cute.model.RuntimeContext;
+import ru.dipech.cute.model.context.RuntimeContext;
 import ru.dipech.cute.model.input.InputArg;
 import ru.dipech.cute.model.input.InputArgs;
 import ru.dipech.cute.model.input.TaskInputArg;

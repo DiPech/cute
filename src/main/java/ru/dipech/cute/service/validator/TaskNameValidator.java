@@ -1,7 +1,7 @@
 package ru.dipech.cute.service.validator;
 
 import org.apache.commons.lang3.StringUtils;
-import ru.dipech.cute.exception.ArgParseException;
+import ru.dipech.cute.exception.parse.ArgParseException;
 
 import java.util.regex.Pattern;
 

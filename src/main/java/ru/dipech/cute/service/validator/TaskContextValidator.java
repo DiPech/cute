@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.dipech.cute.exception.TaskContextValidateException;
 import ru.dipech.cute.model.ScanPath;
-import ru.dipech.cute.model.TaskContext;
+import ru.dipech.cute.model.context.TaskContext;
 import ru.dipech.cute.service.TaskContextMappingBuilder;
 
 import java.util.Map;

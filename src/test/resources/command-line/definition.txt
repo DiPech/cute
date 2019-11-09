@@ -1,0 +1,1 @@
+name=multi title="Parameter can accepts multiple values" default=["a", "b", "c"] validate="[a-z]" multiple

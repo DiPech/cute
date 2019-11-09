@@ -1,8 +1,13 @@
 package ru.dipech.cute.model.input;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @ToString
@@ -39,7 +44,7 @@ public class InputArgs {
         if (!hasParam(name)) {
             return 0;
         }
-        return getParamValues(name).length;
+        return getParamValues(name).size();
     }
 
     public boolean hasFlag(String name) {
@@ -54,14 +59,14 @@ public class InputArgs {
         if (!hasParam(name)) {
             return null;
         }
-        String[] values = getParamValues(name);
-        return values.length > 0 ? values[0] : null;
+        List<String> values = getParamValues(name);
+        return values.size() > 0 ? values.get(0) : null;
     }
 
-    public String[] getParamValues(String name) {
+    public List<String> getParamValues(String name) {
         if (!hasParam(name)) {
-            return new String[]{};
+            return new ArrayList<>();
         }
-        return params.get(name).getValues().toArray(new String[]{});
+        return params.get(name).getValues();
     }
 }

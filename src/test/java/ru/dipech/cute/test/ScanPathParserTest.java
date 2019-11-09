@@ -3,8 +3,8 @@ package ru.dipech.cute.test;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import ru.dipech.cute.exception.ScanPathParseException;
-import ru.dipech.cute.service.ScanPathParser;
+import ru.dipech.cute.exception.parse.ScanPathParseException;
+import ru.dipech.cute.service.parser.ScanPathParser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

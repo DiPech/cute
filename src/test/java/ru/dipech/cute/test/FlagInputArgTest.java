@@ -2,7 +2,7 @@ package ru.dipech.cute.test;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import ru.dipech.cute.exception.ArgParseException;
+import ru.dipech.cute.exception.parse.ArgParseException;
 import ru.dipech.cute.model.input.FlagInputArg;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

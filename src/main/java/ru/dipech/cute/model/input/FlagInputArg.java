@@ -3,7 +3,7 @@ package ru.dipech.cute.model.input;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.apache.commons.lang3.StringUtils;
-import ru.dipech.cute.exception.ArgParseException;
+import ru.dipech.cute.exception.parse.ArgParseException;
 
 @ToString(callSuper = true)
 @NoArgsConstructor
