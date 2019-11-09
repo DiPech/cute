@@ -24,31 +24,36 @@ class TaskParserTest {
 
     @Test
     void parseTaskMinimum() {
-        // @todo simplify minimum task because now we have FileParserTest
-        Task expected = Task.builder().name("minimum").title("Absolute minimum for creating task").build();
+        Task expected = Task.builder()
+            .name("minimum")
+            .title("Absolute minimum for creating task")
+            .flags(new HashMap<>())
+            .params(new HashMap<>())
+            .executeBefore(new LinkedList<>())
+            .executeAfter(new LinkedList<>())
+            .build();
         assertEquals(expected, parser.parse(Paths.get(TASK_DATA_PATH + "/minimum.sh")));
     }
 
     @Test
     void parseTaskMaximum() {
-        // @todo simplify maximum task because now we have FileParserTest
         Task expected = Task.builder()
             .name("maximum")
             .title("Absolute maximum for creating task")
             .description("Execute task \"minimum\" before and after execution three times.")
-            .executeBefore(new LinkedList<>(getMaximumTaskExecDependency()))
-            .executeAfter(new LinkedList<>(getMaximumTaskExecDependency()))
+            .executeBefore(new LinkedList<>(getTaskExecDependency(1)))
+            .executeAfter(new LinkedList<>(getTaskExecDependency(2)))
             .flags(getMaximumTaskFlags())
             .params(getMaximumTaskParams())
             .build();
         assertEquals(expected, parser.parse(Paths.get(TASK_DATA_PATH + "/maximum.sh")));
     }
 
-    private List<InputTask> getMaximumTaskExecDependency() {
+    private List<InputTask> getTaskExecDependency(int count) {
         List<InputTask> result = new ArrayList<>();
-        result.add(new InputTask("minimum", new InputArgs()));
-        result.add(new InputTask("minimum", new InputArgs()));
-        result.add(new InputTask("minimum", new InputArgs()));
+        for (int i = 0; i < count; i++) {
+            result.add(new InputTask("minimum", new InputArgs()));
+        }
         return result;
     }
 

@@ -1,4 +1,4 @@
-package ru.dipech.cute.service.parser;
+package ru.dipech.cute.service.parser.input;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -10,11 +10,11 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class CommandLineStrPairsParser {
-    private final CommandLineParser commandLineParser;
+public class InputStringStrPairsParser {
+    private final InputStringParser inputStringParser;
 
     public StrPairs parse(String command) {
-        String[] args = commandLineParser.parse(command);
+        String[] args = inputStringParser.parse(command);
         return new StrPairs(Arrays.stream(args)
             .map(this::parseStrPair)
             .collect(Collectors.toList())

@@ -1,6 +1,6 @@
-package ru.dipech.cute.exception;
+package ru.dipech.cute.exception.parse;
 
-public class TaskParseException extends InternalException {
+public class TaskParseException extends ParseException {
     public TaskParseException(Throwable e) {
         super(e);
     }

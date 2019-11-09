@@ -1,12 +1,13 @@
-# Regexp to parse command line
+# Regexps to parse inputs
 
-We need ability to parse string command to array of strings exact like bash or similar soft does.
-Realisation in class CommandLineParser. Here is regexp to parse.
+Test it in https://regex101.com
 
-## Common template
+## Regexp to parse cute input string
+
+### Common template
 ((___)|(___)|(___)|(___)|(___)|(___)|(___)|(___))(\s+)?
 
-## Replacements in order
+### Replacements in order
 - Long parameter with text inside: --[\w\d]+\=".*?"
 - Short parameter with text inside: -[\w\d]\=".*?"
 - Long parameter with simple string: --[\w\d]+\=[\w\d-_]+
@@ -16,5 +17,21 @@ Realisation in class CommandLineParser. Here is regexp to parse.
 - Short flag: -[\w\d]
 - Task name: [\w\d:]+
 
-## Result template:
+### Result template:
 ((--[\w\d]+\=".*?")|(-[\w\d]\=".*?")|(--[\w\d]+\=[\w\d-_]+)|(-[\w\d]\=[\w\d-_]+)|(--[\w\d]+)|(-[\w\d]+)|(-[\w\d])|([\w\d:]+))(\s+)?
+
+------------------------------------------------------------------------------------------------------------------------
+
+## Regexp to parse definition input string (flags and params)
+
+### Common template
+((___)|(___)|(___)|(___))(\s+)?
+
+### Replacements in order
+- Param with multiple values: [a-z0-9]+=\[.*?\]
+- Param without quotes: [a-z0-9]+=[a-z0-9\-]+
+- Param with quotes: [a-z0-9]+=".*?"
+- Flag: [a-z0-9]+
+
+### Result template:
+(([a-z0-9]+=\[.*?\])|([a-z0-9]+=[a-z0-9\-]+)|([a-z0-9]+=".*?")|([a-z0-9]+))(\s+)?

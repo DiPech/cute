@@ -2,7 +2,7 @@ package ru.dipech.cute.service.parser;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
-import ru.dipech.cute.exception.TaskParseException;
+import ru.dipech.cute.exception.parse.TaskParseException;
 import ru.dipech.cute.util.pair.StrPair;
 import ru.dipech.cute.util.pair.StrPairs;
 

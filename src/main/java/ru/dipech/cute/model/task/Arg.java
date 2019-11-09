@@ -5,10 +5,10 @@ import lombok.*;
 @Getter
 @ToString
 @EqualsAndHashCode
-@NoArgsConstructor
+@RequiredArgsConstructor
 @AllArgsConstructor
 public abstract class Arg {
-    protected String name;
+    protected final String name;
     protected String title;
     protected Character shortcut;
 }

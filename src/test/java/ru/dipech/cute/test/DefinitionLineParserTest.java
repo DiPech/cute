@@ -3,8 +3,10 @@ package ru.dipech.cute.test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import ru.dipech.cute.service.parser.input.InputStringParser;
+import ru.dipech.cute.service.parser.input.ParseStrategy;
 
 import java.util.Arrays;
 
@@ -12,22 +14,21 @@ import static ru.dipech.cute.util.TestUtil.RESOURCES_PATH;
 import static ru.dipech.cute.util.TestUtil.getFileContent;
 
 @SpringBootTest
-class CommandLineParserTest {
+class DefinitionLineParserTest {
 
     @Autowired
-    private InputStringParser parser;
+    @Qualifier("definition-line-parse-strategy")
+    private ParseStrategy parseStrategy;
 
     @Test
-    void parseCommand() {
+    void parseDefinition() {
+        InputStringParser parser = new InputStringParser(parseStrategy);
         // see "command-line/readme.txt"
         String[] expected = new String[]{
-            "cute", "-v", "-i", "--azaza", "-g=d", "--oloo=pepepe", "-e=", "--empty=", "task1",
-            "--plot=twist with spaces", "-a=as12", "--bb=bf-g2_3", "-g", "--gfds", "sub:task", "sub:sub:task",
-            "-vim", "--smoke=scope", "azaza:task",
-            "--param=any data with:unavail \t\tparams -a -asd \t\t\t--asdasd -s=dass --asdas='asdasd'",
-            "-g"
+            "name=multi", "title=Parameter can accepts multiple values",
+            "default=[\"a\", \"b\", \"c\"]", "validate=[a-z]", "multiple"
         };
-        String command = getFileContent(RESOURCES_PATH + "/command-line/command.txt");
+        String command = getFileContent(RESOURCES_PATH + "/command-line/definition.txt");
         Assertions.assertEquals(Arrays.asList(expected), Arrays.asList(parser.parse(command)));
     }
 }

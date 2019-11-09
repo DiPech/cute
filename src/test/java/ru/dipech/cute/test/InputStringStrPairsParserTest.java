@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import ru.dipech.cute.service.parser.CommandLineStrPairsParser;
+import ru.dipech.cute.service.parser.input.InputStringStrPairsParser;
 import ru.dipech.cute.util.pair.StrPair;
 import ru.dipech.cute.util.pair.StrPairs;
 
@@ -14,10 +14,10 @@ import static ru.dipech.cute.util.TestUtil.RESOURCES_PATH;
 import static ru.dipech.cute.util.TestUtil.getFileContent;
 
 @SpringBootTest
-class CommandLineStrPairsParserTest {
+class InputStringStrPairsParserTest {
 
     @Autowired
-    private CommandLineStrPairsParser parser;
+    private InputStringStrPairsParser parser;
 
     @Test
     void parseComplexCommand() {
@@ -30,7 +30,7 @@ class CommandLineStrPairsParserTest {
             new StrPair("--param", "any data with:unavail \t\tparams -a -asd \t\t\t--asdasd -s=dass --asdas='asdasd'"),
             new StrPair("-g")
         ));
-        String command = getFileContent(RESOURCES_PATH + "/command-line/command.sh");
+        String command = getFileContent(RESOURCES_PATH + "/command-line/command.txt");
         Assertions.assertEquals(expected, parser.parse(command));
     }
 }
