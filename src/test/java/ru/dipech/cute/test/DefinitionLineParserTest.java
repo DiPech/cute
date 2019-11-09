@@ -10,7 +10,7 @@ import ru.dipech.cute.service.parser.input.ParseStrategy;
 
 import java.util.Arrays;
 
-import static ru.dipech.cute.util.TestUtil.RESOURCES_PATH;
+import static ru.dipech.cute.util.TestUtil.COMMAND_LINE_DATA_PATH;
 import static ru.dipech.cute.util.TestUtil.getFileContent;
 
 @SpringBootTest
@@ -28,7 +28,7 @@ class DefinitionLineParserTest {
             "name=multi", "title=Parameter can accepts multiple values",
             "default=[\"a\", \"b\", \"c\"]", "validate=[a-z]", "multiple"
         };
-        String command = getFileContent(RESOURCES_PATH + "/command-line/definition.txt");
+        String command = getFileContent(COMMAND_LINE_DATA_PATH + "/definition.txt");
         Assertions.assertEquals(Arrays.asList(expected), Arrays.asList(parser.parse(command)));
     }
 }

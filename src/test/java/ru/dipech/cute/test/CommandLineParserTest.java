@@ -8,7 +8,7 @@ import ru.dipech.cute.service.parser.input.InputStringParser;
 
 import java.util.Arrays;
 
-import static ru.dipech.cute.util.TestUtil.RESOURCES_PATH;
+import static ru.dipech.cute.util.TestUtil.COMMAND_LINE_DATA_PATH;
 import static ru.dipech.cute.util.TestUtil.getFileContent;
 
 @SpringBootTest
@@ -27,7 +27,7 @@ class CommandLineParserTest {
             "--param=any data with:unavail \t\tparams -a -asd \t\t\t--asdasd -s=dass --asdas='asdasd'",
             "-g"
         };
-        String command = getFileContent(RESOURCES_PATH + "/command-line/command.txt");
+        String command = getFileContent(COMMAND_LINE_DATA_PATH + "/command.txt");
         Assertions.assertEquals(Arrays.asList(expected), Arrays.asList(parser.parse(command)));
     }
 }

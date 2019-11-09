@@ -21,6 +21,7 @@ public class TestUtil {
     public static final String RESOURCES_PATH = "src/test/resources";
     public static final String PARSER_DATA_PATH = RESOURCES_PATH + "/parser";
     public static final String TASK_DATA_PATH = RESOURCES_PATH + "/task";
+    public static final String COMMAND_LINE_DATA_PATH = RESOURCES_PATH + "/command-line";
 
     public static List<InputArg> getInputArgList() {
         List<InputArg> result = new LinkedList<>();

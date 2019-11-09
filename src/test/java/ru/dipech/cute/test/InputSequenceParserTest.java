@@ -9,7 +9,7 @@ import ru.dipech.cute.service.parser.input.InputSequenceParser;
 import java.util.Arrays;
 import java.util.List;
 
-import static ru.dipech.cute.util.TestUtil.RESOURCES_PATH;
+import static ru.dipech.cute.util.TestUtil.COMMAND_LINE_DATA_PATH;
 import static ru.dipech.cute.util.TestUtil.getFileContent;
 
 @SpringBootTest
@@ -21,7 +21,7 @@ class InputSequenceParserTest {
     @Test
     void parseSequence() {
         List<String> expected = Arrays.asList("a", "abc", "b", "SomeWord", "/var/www/user/images/image.txt");
-        String sequence = getFileContent(RESOURCES_PATH + "/command-line/sequence.txt");
+        String sequence = getFileContent(COMMAND_LINE_DATA_PATH + "/sequence.txt");
         Assertions.assertEquals(expected, parser.parse(sequence));
     }
 }
