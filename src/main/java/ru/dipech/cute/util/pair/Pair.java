@@ -1,4 +1,4 @@
-package ru.dipech.cute.util;
+package ru.dipech.cute.util.pair;
 
 import lombok.*;
 
@@ -6,9 +6,9 @@ import lombok.*;
 @Setter
 @ToString
 @EqualsAndHashCode
-@NoArgsConstructor
+@RequiredArgsConstructor
 @AllArgsConstructor
 public class Pair<T, K> {
-    private T key;
+    private final T key;
     private K value;
 }
