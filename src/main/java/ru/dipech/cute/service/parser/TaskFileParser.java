@@ -3,7 +3,8 @@ package ru.dipech.cute.service.parser;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import ru.dipech.cute.exception.TaskParseException;
-import ru.dipech.cute.util.Pair;
+import ru.dipech.cute.util.pair.StrPair;
+import ru.dipech.cute.util.pair.StrPairs;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -19,7 +20,7 @@ public class TaskFileParser {
     private final Pattern definitionPrefixPattern = Pattern.compile("^#![a-z\\-]+:");
     private final Pattern definitionParserPattern = Pattern.compile("^(.*?):\\s?(.*)$");
 
-    public List<Pair<String, String>> parse(Path filePath) {
+    public StrPairs parse(Path filePath) {
         List<String> definitionLines = getDefinitionLines(filePath);
         List<String> definitions = getDefinitions(definitionLines);
         return getDefinitionPairs(definitions);
@@ -69,11 +70,11 @@ public class TaskFileParser {
         return result;
     }
 
-    private List<Pair<String, String>> getDefinitionPairs(List<String> definitions) {
-        return definitions.stream()
+    private StrPairs getDefinitionPairs(List<String> definitions) {
+        return new StrPairs(definitions.stream()
             .map(line -> StringUtils.stripStart(line, "#!"))
-            .map(this::parseDefinitionPair)
-            .collect(Collectors.toList());
+            .map(this::parseDefPair)
+            .collect(Collectors.toList()));
     }
 
     private boolean isDefinitionFirstLine(String line) {
@@ -81,11 +82,11 @@ public class TaskFileParser {
         return matcher.find();
     }
 
-    private Pair<String, String> parseDefinitionPair(String line) {
+    private StrPair parseDefPair(String line) {
         Matcher matcher = definitionParserPattern.matcher(line);
         if (!matcher.find()) {
             throw new TaskParseException("Can't parse task definition line: " + line);
         }
-        return new Pair<>(matcher.group(1), matcher.group(2));
+        return new StrPair(matcher.group(1), matcher.group(2));
     }
 }
