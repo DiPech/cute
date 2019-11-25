@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/DiPech/cute.svg?branch=develop)](https://travis-ci.com/DiPech/cute)
+
 # cute
 Cute – Makefile alternative written in Java
 
