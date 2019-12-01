@@ -56,7 +56,15 @@ class ParamParserTest {
     }
 
     @Test
-    void parseWithNameAndDefault() {
+    void parseWithNameAndDefaultSingleValue() {
+        List<String> defVal = new ArrayList<>();
+        defVal.add("some-def-val");
+        Param expected = getCommonBuilder().defaultValue(defVal).build();
+        assertEquals(expected, parser.parse(getCommonString() + "default=some-def-val"));
+    }
+
+    @Test
+    void parseWithNameAndDefaultMultipleValues() {
         List<String> defVal = new ArrayList<>();
         defVal.add("a");
         defVal.add("bb");

@@ -20,7 +20,7 @@ class ParamInputArgTest {
         assertThrows(ArgParseException.class, () -> (new ParamInputArg()).parse("-f"));
         assertThrows(ArgParseException.class, () -> (new ParamInputArg()).parse("--flag"));
         assertThrows(ArgParseException.class, () -> (new ParamInputArg()).parse("task:name"));
-        assertThrows(ArgParseException.class, () -> (new ParamInputArg()).parse("=asdasdasd"));
+        assertThrows(ArgParseException.class, () -> (new ParamInputArg()).parse("-=asdasdasd"));
     }
 
     @Test
