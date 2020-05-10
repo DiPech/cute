@@ -7,7 +7,7 @@
 #!flag: name=d title="Draw something"
 #!param: name=s title="Defines some scope" required validate="[a-z]+"
 #!param: name=multi title="Parameter can accepts multiple values" default=["a", "b", "c"] validate="[a-z]" multiple
-echo "This task made for demonstrating evety aspect of writing tasks for Cute"
+echo "This task made for demonstrating every aspect of writing tasks for Cute"
 echo "Use can define flags and parameters and use it."
 echo "For example flag 'print' (or just 'p') and 'd':"
 # ... example "if" with variables "print" and "p"
